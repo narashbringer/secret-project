@@ -8,24 +8,30 @@ import Routes from './Routes.js';
 export default class App extends Component {
   constructor(props){
     super(props)
+    var isAuthenticateds = localStorage.getItem( 'isAuthenticated' ) || false;
+      var user = localStorage.getItem( 'user' ) ||  {};
+   
     this.state={
-      user: {},
-      baseurl:"https://www.q2i-casa.com/",
-      isAuthenticated: false,
-      
-    }
+      isAuthenticated: isAuthenticateds,
+      baseurl: "https://www.q2i-casa.com/",
+      user: user,
+    };
    
-   
-  }
-    userHasAuthenticated = authenticated => {
-      this.setState({ isAuthenticated: authenticated,user:{} });
-    
-    
-  }
 
+      
+  }
+  
+    userHasAuthenticated = (authenticated,user) => {
+
+      localStorage.setItem( 'user', user );
+      localStorage.setItem( 'isAuthenticated', authenticated );
+      this.setState({ isAuthenticated: authenticated,user:user });
+    
+    
+  }
 
 handleLogout = event => {
-  this.userHasAuthenticated(false);
+  this.userHasAuthenticated(false,{});
 }
   render() {
     const childProps = {

@@ -56,7 +56,10 @@ export default class Login extends Component {
                 var pid= JSON.parse(s)
                 z.push(pid["data"]["provider_id"])
                 var s3 = ss[0].split(":")
+                var s4 = ss[7].split(":")
                 z.push(s3[1])
+                z.push(s4[1])
+                console.log(s4)
             //   AsyncStorage.setItem("ID", s3[1])
             //   AsyncStorage.setItem("HEADERS", e)
               //PAY ATTENTION HERE
@@ -91,8 +94,11 @@ export default class Login extends Component {
               //var thing =JSON.stringify({user:{user_id:u,expiry:expiry,client:client,provider_id:pis,uid:uid,token:token,expiry:expiry}})
               setTimeout(() => {
 
-            console.log(z)
-          this.props.userHasAuthenticated(true,z);
+           
+            if(z.length==7){
+          this.props.userHasAuthenticated(true,z);}
+          this.props.history.push("/messaging");
+
         },1000)
       
    
