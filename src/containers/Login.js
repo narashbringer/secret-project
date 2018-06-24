@@ -92,9 +92,12 @@ export default class Login extends Component {
               setTimeout(() => {
 
             console.log(z)
-          this.props.userHasAuthenticated(true,z);
-          this.props.history.push("/Dash");
-        },1000)
+            if(z.length==7){
+              this.props.userHasAuthenticated(true,z);
+              this.props.history.push("/Dash");
+}
+            },1000);
+
 
 
         }
