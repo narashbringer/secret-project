@@ -23,6 +23,7 @@ export default class Login extends Component {
   }
 
   handleSubmit = event => {
+
     event.preventDefault();
         var http = new XMLHttpRequest();
         var z=[]
@@ -92,10 +93,11 @@ export default class Login extends Component {
               setTimeout(() => {
 
             console.log(z)
-            if(z.length==7){
+            if(z.length==6){
               this.props.userHasAuthenticated(true,z);
-              this.props.history.push("/Dash");
-}
+              this.props.history.push("/Main");
+              }
+
             },1000);
 
 

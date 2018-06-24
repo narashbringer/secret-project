@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { SegmentedControl, SegmentedControlItem, Text } from 'react-desktop/macOs';
-import TableComponent from "./Table";
 
 export default class Dash extends Component {
-  constructor(props) {
-  super(props);
+  constructor() {
+  super();
   this.state = { selected: 1 }
 }
 
   renderItems() {
    return [
-     this.renderItem(1, 'Main Dashboard',<TableComponent baseurl={this.props.baseurl}></TableComponent> ),
+     this.renderItem(1, 'Main Dashboard', <Text>Content 1</Text>),
      this.renderItem(2, 'Community Connect', <Text>Content 2</Text>),
 
    ];
