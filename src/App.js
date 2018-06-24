@@ -53,7 +53,12 @@ handleLogout = event => {
         <Navbar.Collapse>
           <Nav pullRight>
           {this.state.isAuthenticated
-  ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+  ? <Fragment>
+  <LinkContainer to="/messaging">
+        <NavItem>Messaging</NavItem>
+      </LinkContainer>
+      <NavItem onClick={this.handleLogout}>Logout</NavItem>
+      </Fragment>
   : <Fragment>
       <LinkContainer to="/signup">
         <NavItem>Signup</NavItem>
@@ -61,6 +66,7 @@ handleLogout = event => {
       <LinkContainer to="/login">
         <NavItem>Login</NavItem>
       </LinkContainer>
+      
     </Fragment>
 }
           </Nav>
