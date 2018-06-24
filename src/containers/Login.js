@@ -29,11 +29,11 @@ export default class Login extends Component {
         var url = this.props.baseurl+"/api/v1/auth/sign_in";
         var params = 'email='+this.state.email+'&password='+this.state.password;
             http.open("POST", url, true);
-     
+
             var ss="";
-          
-           
-      
+
+
+
         //Send the proper header information along with the request
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         var x= this.state.kys
@@ -42,16 +42,16 @@ export default class Login extends Component {
               x=false
               var e=JSON.parse( http.responseText)
         console.log(e)
-             
-            
+
+
                  var s = ""+http.responseText
                  var e = ""+http.getAllResponseHeaders()
                  z.push(http.getResponseHeader("expiry"))
                  z.push(http.getResponseHeader("client"))
                  z.push(http.getResponseHeader("uid"))
                  z.push(http.getResponseHeader("access-token"))
-                 
-                
+
+
                  ss = s.substring(9,s.length-2).split(",")
                 var pid= JSON.parse(s)
                 z.push(pid["data"]["provider_id"])
@@ -61,16 +61,16 @@ export default class Login extends Component {
             //   AsyncStorage.setItem("HEADERS", e)
               //PAY ATTENTION HERE
               //AsyncStorage.setItem("provider_id", s3[19])
-                  
+
              // Actions.red({user_id:s3[1],client:client,uid:uid,token:token,expiry:expiry,provider_id:})
          }
                 if(http.readyState == 4 && http.status >= 400) {
                   alert("Sorry, your username and password were incorrect ");
                   x=true
-    
-                }             
-             
-    
+
+                }
+
+
               }
         //       if(this.state.click == false){
         //         AsyncStorage.setItem("passcode",'')
@@ -80,29 +80,30 @@ export default class Login extends Component {
         //         AsyncStorage.setItem("passcode",this.state.password)
         //         AsyncStorage.setItem("email",this.state.username)
         //       }
-    
-    
-    
-    
-      
+
+
+
+
+
         http.send(params)
-    
-    
+
+
               //var thing =JSON.stringify({user:{user_id:u,expiry:expiry,client:client,provider_id:pis,uid:uid,token:token,expiry:expiry}})
               setTimeout(() => {
 
             console.log(z)
           this.props.userHasAuthenticated(true,z);
+          this.props.history.push("/Dash");
         },1000)
-      
-   
-        }
-        
-       // Auth.signIn(this.state.email, this.state.password);
-       
-       
 
-  
+
+        }
+
+       // Auth.signIn(this.state.email, this.state.password);
+
+
+
+
 
   render() {
     return (
